@@ -1,0 +1,353 @@
+/* PPS_Lab_Solutions.c
+   Programming for Problem Solving - Lab solutions (Programs 1 - 21)
+   Each program is implemented as a function. Run by choosing the number from the menu.
+   Author: (auto-generated)
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <math.h>
+
+#define PI 3.14159265358979323846
+
+/* Function prototypes */
+void prog1();
+void prog2();
+void prog3();
+void prog4();
+void prog5();
+void prog6();
+void prog7();
+void prog8();
+void prog9();
+void prog10();
+void prog11();
+void prog12();
+void prog13();
+void prog14();
+void prog15();
+void prog16();
+void prog17();
+void prog18();
+void prog19();
+void prog20();
+void prog21();
+
+void clear_stdin() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF) {}
+}
+
+int main() {
+    int choice;
+    while (1) {
+        printf("\nProgramming for Problem Solving - Lab Solutions\n");
+        printf("Choose program to run (1-21), 0 to exit:\n");
+        for (int i = 1; i <= 21; ++i) printf("%2d ", i);
+        printf("\nYour choice: ");
+        if (scanf("%d", &choice) != 1) {
+            printf("Invalid input. Exiting.\n");
+            break;
+        }
+        clear_stdin();
+        switch (choice) {
+            case 0: printf("Exiting. Goodbye.\n"); exit(0);
+            case 1: prog1(); break;
+            case 2: prog2(); break;
+            case 3: prog3(); break;
+            case 4: prog4(); break;
+            case 5: prog5(); break;
+            case 6: prog6(); break;
+            case 7: prog7(); break;
+            case 8: prog8(); break;
+            case 9: prog9(); break;
+            case 10: prog10(); break;
+            case 11: prog11(); break;
+            case 12: prog12(); break;
+            case 13: prog13(); break;
+            case 14: prog14(); break;
+            case 15: prog15(); break;
+            case 16: prog16(); break;
+            case 17: prog17(); break;
+            case 18: prog18(); break;
+            case 19: prog19(); break;
+            case 20: prog20(); break;
+            case 21: prog21(); break;
+            default: printf("Please choose a number between 0 and 21.\n");
+        }
+        printf("\n--- Program finished. Returning to menu ---\n");
+    }
+    return 0;
+}
+
+/* 1. Hello, World! */
+void prog1() {
+    printf("\nProgram 1: Hello, World!\n");
+    printf("Hello, World!\n");
+}
+
+/* 2. Display name and roll number */
+void prog2() {
+    char name[100];
+    char roll[50];
+    printf("\nProgram 2: Display name and roll number\n");
+    printf("Enter your name: ");
+    if (!fgets(name, sizeof(name), stdin)) return;
+    if (name[strlen(name)-1] == '\n') name[strlen(name)-1] = '\0';
+    printf("Enter your roll number: ");
+    if (!fgets(roll, sizeof(roll), stdin)) return;
+    if (roll[strlen(roll)-1] == '\n') roll[strlen(roll)-1] = '\0';
+    printf("Name: %s\nRoll Number: %s\n", name, roll);
+}
+
+/* 3. Declare, initialize and display variables */
+void prog3() {
+    int a = 10;
+    float b = 5.75f;
+    char c = 'Z';
+    printf("\nProgram 3: Declare, initialize, display\n");
+    printf("Integer a = %d\nFloat b = %.2f\nChar c = %c\n", a, b, c);
+}
+
+/* 4. Add two numbers and display result (constants) */
+void prog4() {
+    int x = 15, y = 20;
+    int sum = x + y;
+    printf("\nProgram 4: Add two numbers (constants)\n");
+    printf("%d + %d = %d\n", x, y, sum);
+}
+
+/* 5. Add two variables with user input */
+void prog5() {
+    int x, y;
+    printf("\nProgram 5: Add two numbers (user input)\n");
+    printf("Enter first integer: ");
+    if (scanf("%d", &x) != 1) { clear_stdin(); return; }
+    printf("Enter second integer: ");
+    if (scanf("%d", &y) != 1) { clear_stdin(); return; }
+    printf("Sum = %d\n", x + y);
+}
+
+/* 6. Area of a circle from radius */
+void prog6() {
+    double r;
+    printf("\nProgram 6: Area of a circle\n");
+    printf("Enter radius: ");
+    if (scanf("%lf", &r) != 1) { clear_stdin(); return; }
+    if (r < 0) { printf("Radius cannot be negative.\n"); return; }
+    double area = PI * r * r;
+    printf("Area of circle with radius %.4g is %.6f\n", r, area);
+}
+
+/* 7. Swap two numbers using a temporary variable */
+void prog7() {
+    int a, b, temp;
+    printf("\nProgram 7: Swap using temporary variable\n");
+    printf("Enter a: "); if (scanf("%d", &a) != 1) { clear_stdin(); return; }
+    printf("Enter b: "); if (scanf("%d", &b) != 1) { clear_stdin(); return; }
+    printf("Before swap: a = %d, b = %d\n", a, b);
+    temp = a; a = b; b = temp;
+    printf("After swap:  a = %d, b = %d\n", a, b);
+}
+
+/* 8. Average of three numbers (user input) */
+void prog8() {
+    double a, b, c;
+    printf("\nProgram 8: Average of three numbers\n");
+    printf("Enter three numbers separated by space: ");
+    if (scanf("%lf %lf %lf", &a, &b, &c) != 3) { clear_stdin(); return; }
+    double avg = (a + b + c) / 3.0;
+    printf("Average = %.6f\n", avg);
+}
+
+/* 9. Perform all arithmetic operations (user input) */
+void prog9() {
+    int a, b;
+    printf("\nProgram 9: Arithmetic operations\n");
+    printf("Enter two integers a b: ");
+    if (scanf("%d %d", &a, &b) != 2) { clear_stdin(); return; }
+    printf("a + b = %d\n", a + b);
+    printf("a - b = %d\n", a - b);
+    printf("a * b = %d\n", a * b);
+    if (b != 0) {
+        printf("a / b = %d (integer division)\n", a / b);
+        printf("a %% b = %d\n", a % b);
+    } else {
+        printf("Division and modulus by zero not allowed.\n");
+    }
+}
+
+/* 10. Perform all assignment operations */
+void prog10() {
+    int a, b;
+    printf("\nProgram 10: Assignment (compound) operations\n");
+    printf("Enter two integers a b: ");
+    if (scanf("%d %d", &a, &b) != 2) { clear_stdin(); return; }
+    printf("Initial: a = %d, b = %d\n", a, b);
+    a += b; printf("After a += b: a = %d\n", a);
+    a -= b; printf("After a -= b: a = %d\n", a);
+    a *= b; printf("After a *= b: a = %d\n", a);
+    if (b != 0) {
+        a /= b; printf("After a /= b: a = %d\n", a);
+    } else {
+        printf("a /= b skipped (b == 0)\n");
+    }
+    /* For safety, not using %= because a may be 0; demonstrate separately */
+    if (b != 0) {
+        a %= b; printf("After a %%= b: a = %d\n", a);
+    } else {
+        printf("a %%= b skipped (b == 0)\n");
+    }
+}
+
+/* 11. Relational operations */
+void prog11() {
+    int a, b;
+    printf("\nProgram 11: Relational operations\n");
+    printf("Enter two integers a b: ");
+    if (scanf("%d %d", &a, &b) != 2) { clear_stdin(); return; }
+    printf("a < b  : %s\n", (a < b) ? "true" : "false");
+    printf("a > b  : %s\n", (a > b) ? "true" : "false");
+    printf("a <= b : %s\n", (a <= b) ? "true" : "false");
+    printf("a >= b : %s\n", (a >= b) ? "true" : "false");
+    printf("a == b : %s\n", (a == b) ? "true" : "false");
+    printf("a != b : %s\n", (a != b) ? "true" : "false");
+}
+
+/* 12. Logical operations (&&, ||, !) */
+void prog12() {
+    int p, q;
+    printf("\nProgram 12: Logical operations\n");
+    printf("Enter two integers (0 for false, non-zero for true): ");
+    if (scanf("%d %d", &p, &q) != 2) { clear_stdin(); return; }
+    printf("p && q : %s\n", (p && q) ? "true" : "false");
+    printf("p || q : %s\n", (p || q) ? "true" : "false");
+    printf("!p     : %s\n", (!p) ? "true" : "false");
+}
+
+/* 13. Bitwise AND, OR, NOT */
+void prog13() {
+    unsigned int a, b;
+    printf("\nProgram 13: Bitwise AND, OR, NOT\n");
+    printf("Enter two unsigned integers a b: ");
+    if (scanf("%u %u", &a, &b) != 2) { clear_stdin(); return; }
+    printf("a = %u (0x%X)\n", a, a);
+    printf("b = %u (0x%X)\n", b, b);
+    printf("a & b = %u (0x%X)\n", (a & b), (a & b));
+    printf("a | b = %u (0x%X)\n", (a | b), (a | b));
+    printf("~a    = %u (0x%X)\n", (~a), (~a));
+    printf("~b    = %u (0x%X)\n", (~b), (~b));
+}
+
+/* 14. Bitwise right and left shift by 2 */
+void prog14() {
+    unsigned int x;
+    printf("\nProgram 14: Bitwise shift by 2\n");
+    printf("Enter an unsigned integer x: ");
+    if (scanf("%u", &x) != 1) { clear_stdin(); return; }
+    printf("x         = %u (0x%X)\n", x, x);
+    printf("x << 2    = %u (0x%X)\n", (x << 2), (x << 2));
+    printf("x >> 2    = %u (0x%X)\n", (x >> 2), (x >> 2));
+}
+
+/* 15. Greatest of two numbers using ternary operator */
+void prog15() {
+    int a, b;
+    printf("\nProgram 15: Greatest of two using ternary operator\n");
+    printf("Enter two integers a b: ");
+    if (scanf("%d %d", &a, &b) != 2) { clear_stdin(); return; }
+    int greatest = (a > b) ? a : b;
+    printf("Greatest = %d\n", greatest);
+}
+
+/* 16. Swap two numbers without using a temporary variable (using XOR) */
+void prog16() {
+    int a, b;
+    printf("\nProgram 16: Swap without temporary variable (XOR)\n");
+    printf("Enter a and b: ");
+    if (scanf("%d %d", &a, &b) != 2) { clear_stdin(); return; }
+    printf("Before: a = %d, b = %d\n", a, b);
+    if (&a != &b) { /* ensure different addresses */
+        a = a ^ b;
+        b = a ^ b;
+        a = a ^ b;
+    }
+    printf("After:  a = %d, b = %d\n", a, b);
+}
+
+/* 17. Check even or odd */
+void prog17() {
+    int n;
+    printf("\nProgram 17: Even or odd\n");
+    printf("Enter an integer: ");
+    if (scanf("%d", &n) != 1) { clear_stdin(); return; }
+    if (n % 2 == 0) printf("%d is even.\n", n);
+    else printf("%d is odd.\n", n);
+}
+
+/* 18. Positive, negative, or zero */
+void prog18() {
+    double x;
+    printf("\nProgram 18: Positive, Negative or Zero\n");
+    printf("Enter a number: ");
+    if (scanf("%lf", &x) != 1) { clear_stdin(); return; }
+    if (x > 0) printf("Number is positive.\n");
+    else if (x < 0) printf("Number is negative.\n");
+    else printf("Number is zero.\n");
+}
+
+/* 19. Greatest of three numbers */
+void prog19() {
+    double a, b, c;
+    printf("\nProgram 19: Greatest of three numbers\n");
+    printf("Enter three numbers: ");
+    if (scanf("%lf %lf %lf", &a, &b, &c) != 3) { clear_stdin(); return; }
+    double g = a;
+    if (b > g) g = b;
+    if (c > g) g = c;
+    printf("Greatest = %.6g\n", g);
+}
+
+/* 20. Accept marks of five subjects, calculate total, average, percentage, assign grades */
+void prog20() {
+    double marks[5], total = 0.0;
+    printf("\nProgram 20: Marks, Total, Average, Percentage, Grade\n");
+    for (int i = 0; i < 5; ++i) {
+        printf("Enter marks for subject %d (out of 100): ", i+1);
+        if (scanf("%lf", &marks[i]) != 1) { clear_stdin(); return; }
+        if (marks[i] < 0) marks[i] = 0;
+        if (marks[i] > 100) marks[i] = 100;
+        total += marks[i];
+    }
+    double average = total / 5.0;
+    double percentage = (total / 500.0) * 100.0;
+    char grade;
+    if (percentage >= 90) grade = 'A';
+    else if (percentage >= 80) grade = 'B';
+    else if (percentage >= 70) grade = 'C';
+    else if (percentage >= 60) grade = 'D';
+    else grade = 'F';
+
+    printf("Total = %.2f\nAverage = %.2f\nPercentage = %.2f%%\nGrade = %c\n",
+           total, average, percentage, grade);
+}
+
+/* 21. Check vowel or consonant using switch-case */
+void prog21() {
+    char ch;
+    printf("\nProgram 21: Vowel or consonant (using switch)\n");
+    printf("Enter an alphabet character: ");
+    if (scanf(" %c", &ch) != 1) { clear_stdin(); return; }
+    if (!isalpha((unsigned char)ch)) {
+        printf("Input is not an alphabet.\n");
+        return;
+    }
+    char lower = (char)tolower((unsigned char)ch);
+    switch (lower) {
+        case 'a': case 'e': case 'i': case 'o': case 'u':
+            printf("%c is a vowel.\n", ch); break;
+        default:
+            printf("%c is a consonant.\n", ch);
+    }
+}
